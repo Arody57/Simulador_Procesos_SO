@@ -1,12 +1,16 @@
-﻿using System;
+﻿using Simulacion_Procesos.InformacionProcesso;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using proyectoDisney_.variable_Global;
+
 
 namespace Simulacion_Procesos
 {
@@ -14,6 +18,7 @@ namespace Simulacion_Procesos
     {
        
         gridAsignationProcess FormPrincipal;
+        //int idItem = variableGlobal.id_proceso = 1;
         public info_procesos(gridAsignationProcess FormInit)
         {
             FormPrincipal = FormInit;
@@ -54,7 +59,8 @@ namespace Simulacion_Procesos
                 case 5:
                     txtMemory.Text = "2";
                     txtCpu.Text = "85";
-                    txtTime.Text = "120";
+                    //txtTime.Text = "120";
+                    txtTime.Text = "60";
                     break;
                 default:
                     break;
@@ -62,15 +68,11 @@ namespace Simulacion_Procesos
         }
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
-            List<string> el = new List<string>();
-
-            el.Add(cmbProcess.SelectedItem.ToString());
-            el.Add((float.Parse(txtMemory.Text)).ToString());
-            el.Add((Convert.ToInt32(txtCpu.Text)).ToString());
-            el.Add((Convert.ToInt32(txtTime.Text)).ToString());
-                FormPrincipal.setDataGrid(el);
-                Dispose();
+         
+            info_process_grid newItem = new info_process_grid(variableGlobal.id_proceso++, cmbProcess.SelectedItem.ToString(), float.Parse(txtMemory.Text), Convert.ToInt32(txtCpu.Text), Convert.ToInt32(txtTime.Text));
+            FormPrincipal.setDataGrid(newItem);
+            Dispose();
         }
+
     }
 }

@@ -29,6 +29,7 @@ namespace Simulacion_Procesos
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -79,6 +80,11 @@ namespace Simulacion_Procesos
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tmrDev = new System.Windows.Forms.Timer(this.components);
+            this.mls = new System.Windows.Forms.Label();
+            this.Time = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -104,7 +110,7 @@ namespace Simulacion_Procesos
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Location = new System.Drawing.Point(3, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1326, 97);
+            this.panel1.Size = new System.Drawing.Size(1218, 97);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -124,7 +130,7 @@ namespace Simulacion_Procesos
             this.agregarProcesoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1326, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1218, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -169,6 +175,7 @@ namespace Simulacion_Procesos
             // 
             // gridProcess
             // 
+            this.gridProcess.AllowUserToAddRows = false;
             this.gridProcess.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridProcess.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
@@ -240,6 +247,7 @@ namespace Simulacion_Procesos
             // 
             // gridNew
             // 
+            this.gridNew.AllowUserToAddRows = false;
             this.gridNew.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridNew.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -300,6 +308,7 @@ namespace Simulacion_Procesos
             // 
             // gridReady
             // 
+            this.gridReady.AllowUserToAddRows = false;
             this.gridReady.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridReady.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn6,
@@ -308,6 +317,7 @@ namespace Simulacion_Procesos
             this.dataGridViewTextBoxColumn9,
             this.dataGridViewTextBoxColumn10});
             this.gridReady.Location = new System.Drawing.Point(46, 93);
+            this.gridReady.MultiSelect = false;
             this.gridReady.Name = "gridReady";
             this.gridReady.Size = new System.Drawing.Size(541, 237);
             this.gridReady.TabIndex = 20;
@@ -360,6 +370,7 @@ namespace Simulacion_Procesos
             // 
             // gridFinal
             // 
+            this.gridFinal.AllowUserToAddRows = false;
             this.gridFinal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridFinal.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn16,
@@ -420,6 +431,7 @@ namespace Simulacion_Procesos
             // 
             // gridWait
             // 
+            this.gridWait.AllowUserToAddRows = false;
             this.gridWait.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridWait.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn21,
@@ -480,6 +492,7 @@ namespace Simulacion_Procesos
             // 
             // gridRunning
             // 
+            this.gridRunning.AllowUserToAddRows = false;
             this.gridRunning.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridRunning.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn11,
@@ -527,12 +540,49 @@ namespace Simulacion_Procesos
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             this.dataGridViewTextBoxColumn15.ReadOnly = true;
             // 
+            // tmrDev
+            // 
+            this.tmrDev.Interval = 1000;
+            this.tmrDev.Tick += new System.EventHandler(this.tmrDev_Tick);
+            // 
+            // mls
+            // 
+            this.mls.AutoSize = true;
+            this.mls.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mls.Location = new System.Drawing.Point(1411, 507);
+            this.mls.Name = "mls";
+            this.mls.Size = new System.Drawing.Size(19, 18);
+            this.mls.TabIndex = 26;
+            this.mls.Text = "0";
+            // 
+            // Time
+            // 
+            this.Time.AutoSize = true;
+            this.Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Time.Location = new System.Drawing.Point(1387, 480);
+            this.Time.Name = "Time";
+            this.Time.Size = new System.Drawing.Size(61, 20);
+            this.Time.TabIndex = 28;
+            this.Time.Text = "Tiempo";
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // timer3
+            // 
+            this.timer3.Interval = 1000;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
             // gridAsignationProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1471, 641);
+            this.ClientSize = new System.Drawing.Size(1550, 641);
+            this.Controls.Add(this.Time);
+            this.Controls.Add(this.mls);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox5);
@@ -543,6 +593,7 @@ namespace Simulacion_Procesos
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "gridAsignationProcess";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.gridAsignationProcess_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -560,6 +611,7 @@ namespace Simulacion_Procesos
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridRunning)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -615,6 +667,11 @@ namespace Simulacion_Procesos
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
+        private System.Windows.Forms.Timer tmrDev;
+        private System.Windows.Forms.Label mls;
+        private System.Windows.Forms.Label Time;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timer3;
     }
 }
 
