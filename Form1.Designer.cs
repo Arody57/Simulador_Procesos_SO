@@ -85,6 +85,15 @@ namespace Simulacion_Procesos
             this.Time = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.btnInterrupt = new System.Windows.Forms.Button();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.gridInterrupt = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timerInter = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -99,6 +108,8 @@ namespace Simulacion_Procesos
             ((System.ComponentModel.ISupportInitialize)(this.gridWait)).BeginInit();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridRunning)).BeginInit();
+            this.groupBox7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridInterrupt)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -110,7 +121,7 @@ namespace Simulacion_Procesos
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Location = new System.Drawing.Point(3, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1218, 97);
+            this.panel1.Size = new System.Drawing.Size(1489, 97);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -130,7 +141,7 @@ namespace Simulacion_Procesos
             this.agregarProcesoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1218, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1489, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -361,7 +372,7 @@ namespace Simulacion_Procesos
             // 
             this.groupBox4.Controls.Add(this.gridFinal);
             this.groupBox4.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(702, 994);
+            this.groupBox4.Location = new System.Drawing.Point(339, 1426);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(627, 399);
             this.groupBox4.TabIndex = 21;
@@ -502,6 +513,7 @@ namespace Simulacion_Procesos
             this.dataGridViewTextBoxColumn15});
             this.gridRunning.Location = new System.Drawing.Point(43, 90);
             this.gridRunning.Name = "gridRunning";
+            this.gridRunning.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gridRunning.Size = new System.Drawing.Size(541, 237);
             this.gridRunning.TabIndex = 20;
             // 
@@ -575,12 +587,90 @@ namespace Simulacion_Procesos
             this.timer3.Interval = 1000;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
             // 
+            // btnInterrupt
+            // 
+            this.btnInterrupt.Location = new System.Drawing.Point(1373, 566);
+            this.btnInterrupt.Name = "btnInterrupt";
+            this.btnInterrupt.Size = new System.Drawing.Size(75, 34);
+            this.btnInterrupt.TabIndex = 29;
+            this.btnInterrupt.Text = "Interrumpir";
+            this.btnInterrupt.UseVisualStyleBackColor = true;
+            this.btnInterrupt.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.gridInterrupt);
+            this.groupBox7.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox7.Location = new System.Drawing.Point(702, 983);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(627, 399);
+            this.groupBox7.TabIndex = 30;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Cola Interrupt";
+            // 
+            // gridInterrupt
+            // 
+            this.gridInterrupt.AllowUserToAddRows = false;
+            this.gridInterrupt.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridInterrupt.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn26,
+            this.dataGridViewTextBoxColumn27,
+            this.dataGridViewTextBoxColumn28,
+            this.dataGridViewTextBoxColumn29,
+            this.dataGridViewTextBoxColumn30});
+            this.gridInterrupt.Location = new System.Drawing.Point(44, 85);
+            this.gridInterrupt.Name = "gridInterrupt";
+            this.gridInterrupt.Size = new System.Drawing.Size(541, 237);
+            this.gridInterrupt.TabIndex = 21;
+            // 
+            // dataGridViewTextBoxColumn26
+            // 
+            this.dataGridViewTextBoxColumn26.Frozen = true;
+            this.dataGridViewTextBoxColumn26.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
+            this.dataGridViewTextBoxColumn26.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn27
+            // 
+            this.dataGridViewTextBoxColumn27.Frozen = true;
+            this.dataGridViewTextBoxColumn27.HeaderText = "Nombre";
+            this.dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
+            this.dataGridViewTextBoxColumn27.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn28
+            // 
+            this.dataGridViewTextBoxColumn28.Frozen = true;
+            this.dataGridViewTextBoxColumn28.HeaderText = "Quantum";
+            this.dataGridViewTextBoxColumn28.Name = "dataGridViewTextBoxColumn28";
+            this.dataGridViewTextBoxColumn28.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn29
+            // 
+            this.dataGridViewTextBoxColumn29.Frozen = true;
+            this.dataGridViewTextBoxColumn29.HeaderText = "Memoria";
+            this.dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
+            this.dataGridViewTextBoxColumn29.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn30
+            // 
+            this.dataGridViewTextBoxColumn30.Frozen = true;
+            this.dataGridViewTextBoxColumn30.HeaderText = "CPU";
+            this.dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
+            this.dataGridViewTextBoxColumn30.ReadOnly = true;
+            // 
+            // timerInter
+            // 
+            this.timerInter.Interval = 1000;
+            this.timerInter.Tick += new System.EventHandler(this.timerInter_Tick);
+            // 
             // gridAsignationProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1550, 641);
+            this.ClientSize = new System.Drawing.Size(1518, 641);
+            this.Controls.Add(this.groupBox7);
+            this.Controls.Add(this.btnInterrupt);
             this.Controls.Add(this.Time);
             this.Controls.Add(this.mls);
             this.Controls.Add(this.groupBox6);
@@ -610,6 +700,8 @@ namespace Simulacion_Procesos
             ((System.ComponentModel.ISupportInitialize)(this.gridWait)).EndInit();
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridRunning)).EndInit();
+            this.groupBox7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridInterrupt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -672,6 +764,15 @@ namespace Simulacion_Procesos
         private System.Windows.Forms.Label Time;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Button btnInterrupt;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.DataGridView gridInterrupt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn30;
+        private System.Windows.Forms.Timer timerInter;
     }
 }
 
