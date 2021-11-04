@@ -134,8 +134,7 @@ namespace Simulacion_Procesos
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Location = new System.Drawing.Point(3, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1489, 97);
-            this.panel1.Size = new System.Drawing.Size(1275, 97);
+            this.panel1.Size = new System.Drawing.Size(1258, 97);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -155,7 +154,7 @@ namespace Simulacion_Procesos
             this.agregarProcesoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1489, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1258, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 

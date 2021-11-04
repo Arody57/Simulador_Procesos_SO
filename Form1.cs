@@ -305,13 +305,6 @@ namespace Simulacion_Procesos
             }
         }
 
-
-        private void gridAsignationProcess_FormClosing(object sender, FormClosingEventArgs e)
-
-     
-
-
-
             private void gridAsignationProcess_FormClosing(object sender, FormClosingEventArgs e)
         {
             tmrDev.Enabled = false;
