@@ -26,6 +26,7 @@ namespace Simulacion_Procesos
         Cola.Cola QueueRunning = new Cola.Cola();
         Cola.Cola QueueWait = new Cola.Cola();
         Cola.Cola QueueFinal = new Cola.Cola();
+        Cola.Cola QeueueInterrupt = new Cola.Cola();
         public string[] arr;
         public gridAsignationProcess()
         {
@@ -129,6 +130,49 @@ namespace Simulacion_Procesos
                         timer2.Start();
 
                 }
+            }
+        }
+        //Ingresa a la grid interrupt
+        public void enqueueGridInterrupt()
+        {
+            int lengthProc = QueueRunning.NumeroElementos;
+
+                if (gridRunning.RowCount > 0)
+                {
+                    MessageBox.Show("Moviendo cola " + gridRunning.CurrentRow.Selected + "  a estado Interrumpido ", "Informacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    gridRunning.Rows.RemoveAt(gridRunning.CurrentRow.Index);
+                    info_process_grid index;
+                    index = (info_process_grid)QueueRunning.Pop();
+
+                    string[] items = index.ToString().Split(',');
+                    gridInterrupt.Rows.Add(items);
+
+
+                    QeueueInterrupt.Push(index);
+                    timerInter.Start();
+                }
+            
+        }
+        //sale de la grid interrupt hacia grid ready 
+        public void dequeueInterruptProcess()
+        {
+            int length = QeueueInterrupt.NumeroElementos;
+            for (int a = 0; a< length; a++)
+            {
+                if (gridInterrupt.RowCount > 0)
+                {
+                    MessageBox.Show("Moviendo cola " + gridInterrupt.CurrentRow.Selected + "  a estado Ready ", "Informacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    gridInterrupt.Rows.RemoveAt(gridInterrupt.CurrentRow.Index);
+                    info_process_grid indexProces;
+                    indexProces = (info_process_grid)QeueueInterrupt.Pop();
+
+                    string[] itemProcess = indexProces.ToString().Split(',');
+                    
+                    gridReady.Rows.Add(itemProcess);
+                    QueueReady.Push(indexProces);
+                }
+                timer3.Stop();
+                dequeueEnqueueProcess1();
             }
         }
 
@@ -238,7 +282,32 @@ namespace Simulacion_Procesos
                 devAux = 0;
             }
         }
+        private void timerInter_Tick(object sender, EventArgs e)
+        {
+            int AuxiliarTime = Convert.ToInt32(mls.Text);
+            AuxiliarTime = AuxiliarTime + 1;
 
+            //Milisegudos
+            mls.Text = AuxiliarTime.ToString();
+
+            if (AuxiliarTime == 6)
+            {
+                timerInter.Stop();
+                //120
+                string timeProcess = variableGlobal.inProcess[3];
+                int auxInProgress = AuxiliarTime; //60
+                int auxProcess = Convert.ToInt32(timeProcess);
+                variableGlobal.calcRest = auxProcess - auxInProgress;
+
+                dequeueInterruptProcess();
+
+                mls.Text = "0";
+                AuxiliarTime = 0;
+            }
+        }
+
+
+        private void gridAsignationProcess_FormClosing(object sender, FormClosingEventArgs e)
 
      
 
@@ -248,6 +317,8 @@ namespace Simulacion_Procesos
         {
             tmrDev.Enabled = false;
             timer2.Enabled = false;
+            timer3.Enabled = false;
+            timerInter.Enabled = false;
         }
 
         public void EnqueueWaiting()
@@ -270,6 +341,23 @@ namespace Simulacion_Procesos
             QueueWait.Push(indexProces);
             timer3.Start();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                tmrDev.Enabled = false;
+            if (gridRunning.SelectedRows.Count > 0)
+            {
+
+                timer2.Enabled = false;
+                timer3.Enabled = false;
+                //string value = gridRunning.CurrentRow.Cells["Nombre"].Value.ToString();
+                //Desde la grid, hacer que pase a la grid nueva de interrupt dandole un tiempo random de espera y luego que encole a Ready
+                mls.Text = "0";
+                enqueueGridInterrupt();
+                timer2.Enabled = false;
+            }
+        }
+
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
