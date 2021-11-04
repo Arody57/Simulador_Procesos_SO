@@ -128,7 +128,6 @@ namespace Simulacion_Procesos
 
                     QueueRunning.Push(indexProces);
                         timer2.Start();
-
                 }
             }
         }
@@ -246,7 +245,7 @@ namespace Simulacion_Procesos
                 string timeProcess = variableGlobal.inProcess[3];
                 int auxInProgress = n1;
                 int auxProcess = Convert.ToInt32(timeProcess);
-                bool enqueueProcess = variableGlobal.count == 3 ? true : false;
+                bool enqueueProcess = variableGlobal.count == 2 ? true : false;
 
                 if (enqueueProcess)
                     EnqueueFinished();

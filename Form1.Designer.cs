@@ -668,7 +668,7 @@ namespace Simulacion_Procesos
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1518, 641);
+            this.ClientSize = new System.Drawing.Size(1535, 641);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.btnInterrupt);
             this.Controls.Add(this.Time);

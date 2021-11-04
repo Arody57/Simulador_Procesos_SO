@@ -13,5 +13,8 @@ namespace proyectoDisney_.variable_Global
         static public string [] inProcess;
         static public int count = 0;
         static public int calcRest = 0;
+        static public int tiempoTotal = 0;
+        static public int tiempoRestante= 0;
+
     }
 }
