@@ -15,6 +15,5 @@ namespace proyectoDisney_.variable_Global
         static public int calcRest = 0;
         static public int tiempoTotal = 0;
         static public int tiempoRestante= 0;
-
     }
 }

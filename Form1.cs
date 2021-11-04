@@ -55,7 +55,7 @@ namespace Simulacion_Procesos
         {
             creacionProceso();
             tmrDev.Start();
-            
+
         }
 
         private void asignarProcesosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -93,19 +93,19 @@ namespace Simulacion_Procesos
         {
             int lengthProcess = QueueNew.NumeroElementos;
 
-                if (gridNew.RowCount > 0)
-                {
-                    MessageBox.Show("Moviendo cola " + gridNew.CurrentRow.Selected + "  a estado Ready ", "Informacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    gridNew.Rows.RemoveAt(gridNew.CurrentRow.Index);
-                    info_process_grid indexProces;
-                    indexProces = (info_process_grid)QueueNew.Pop();
+            if (gridNew.RowCount > 0)
+            {
+                MessageBox.Show("Moviendo cola " + gridNew.CurrentRow.Selected + "  a estado Ready ", "Informacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                gridNew.Rows.RemoveAt(gridNew.CurrentRow.Index);
+                info_process_grid indexProces;
+                indexProces = (info_process_grid)QueueNew.Pop();
 
-                    string[] itemProcess = indexProces.ToString().Split(',');
-                    variableGlobal.inProcess = itemProcess;
-                    gridReady.Rows.Add(itemProcess);
-                    QueueReady.Push(indexProces);
+                string[] itemProcess = indexProces.ToString().Split(',');
+                variableGlobal.inProcess = itemProcess;
+                gridReady.Rows.Add(itemProcess);
+                QueueReady.Push(indexProces);
 
-                }
+            }
             dequeueEnqueueProcess1();
         }
         /// <summary>
@@ -124,39 +124,43 @@ namespace Simulacion_Procesos
                     indexProces = (info_process_grid)QueueReady.Pop();
 
                     string[] itemProcess = indexProces.ToString().Split(',');
+                    variableGlobal.tiempoTotal = Convert.ToInt32(itemProcess[3]);
                     gridRunning.Rows.Add(itemProcess);
-
                     QueueRunning.Push(indexProces);
-                        timer2.Start();
                 }
             }
+            bool flag = variableGlobal.tiempoTotal <= 60 ? true : false;
+            if (flag)
+                timerFinalizado.Start();
+            else
+                timer2.Start();
         }
         //Ingresa a la grid interrupt
         public void enqueueGridInterrupt()
         {
             int lengthProc = QueueRunning.NumeroElementos;
 
-                if (gridRunning.RowCount > 0)
-                {
-                    MessageBox.Show("Moviendo cola " + gridRunning.CurrentRow.Selected + "  a estado Interrumpido ", "Informacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
-                    gridRunning.Rows.RemoveAt(gridRunning.CurrentRow.Index);
-                    info_process_grid index;
-                    index = (info_process_grid)QueueRunning.Pop();
+            if (gridRunning.RowCount > 0)
+            {
+                MessageBox.Show("Moviendo cola " + gridRunning.CurrentRow.Selected + "  a estado Interrumpido ", "Informacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                gridRunning.Rows.RemoveAt(gridRunning.CurrentRow.Index);
+                info_process_grid index;
+                index = (info_process_grid)QueueRunning.Pop();
 
-                    string[] items = index.ToString().Split(',');
-                    gridInterrupt.Rows.Add(items);
+                string[] items = index.ToString().Split(',');
+                gridInterrupt.Rows.Add(items);
 
 
-                    QeueueInterrupt.Push(index);
-                    timerInter.Start();
-                }
-            
+                QeueueInterrupt.Push(index);
+                timerInter.Start();
+            }
+
         }
         //sale de la grid interrupt hacia grid ready 
         public void dequeueInterruptProcess()
         {
             int length = QeueueInterrupt.NumeroElementos;
-            for (int a = 0; a< length; a++)
+            for (int a = 0; a < length; a++)
             {
                 if (gridInterrupt.RowCount > 0)
                 {
@@ -166,7 +170,7 @@ namespace Simulacion_Procesos
                     indexProces = (info_process_grid)QeueueInterrupt.Pop();
 
                     string[] itemProcess = indexProces.ToString().Split(',');
-                    
+
                     gridReady.Rows.Add(itemProcess);
                     QueueReady.Push(indexProces);
                 }
@@ -199,7 +203,7 @@ namespace Simulacion_Procesos
         {
             mls.Text = "0";
             int vLengthPro = QueueRunning.NumeroElementos;
-            for (int i = 0;  i< vLengthPro; i++)
+            for (int i = 0; i < vLengthPro; i++)
             {
                 if (gridRunning.RowCount > 0)
                 {
@@ -214,24 +218,29 @@ namespace Simulacion_Procesos
             gridFinal.Rows.Add(itemEl);
             QueueFinal.Push(itemEl);
             MessageBox.Show("Proceso finalizado correctamente", "Informacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+            tmrDev.Enabled = false;
+            timer2.Enabled = false;
+            timer3.Enabled = false;
+            timerFinalizado.Enabled = false;
+            timerInter.Enabled = false;
         }
 
         private void tmrDev_Tick(object sender, EventArgs e)//
         {
             int aux = Convert.ToInt32(mls.Text);
-            aux = aux+1;
+            aux = aux + 1;
 
             //Milisegudos
             mls.Text = aux.ToString();
 
             if (aux == 5) //segundos en estado NEW para pasar a ready y runing 
             {
-                tmrDev.Stop(); 
+                tmrDev.Stop();
                 dequeueEnqueueProcess();
                 mls.Text = "0";
                 aux = 0;
             }
-           
+
         }
         private void timer2_Tick(object sender, EventArgs e)/////RUNING
         {
@@ -239,24 +248,26 @@ namespace Simulacion_Procesos
             n1 = n1 + 1;
 
             mls.Text = n1.ToString();
-            if (n1 == 10) //60
-            {
-                timer2.Stop();
-                string timeProcess = variableGlobal.inProcess[3];
-                int auxInProgress = n1;
-                int auxProcess = Convert.ToInt32(timeProcess);
-                bool enqueueProcess = variableGlobal.count == 2 ? true : false;
 
-                if (enqueueProcess)
-                    EnqueueFinished();
-                else 
-                EnqueueWaiting();
-                variableGlobal.count = variableGlobal.count + 1;
 
-           
-            }
-           
+                if (n1 == 30) //60
+                {
+                    timer2.Stop();
+                    string timeProcess = variableGlobal.inProcess[3];
+                    int auxInProgress = n1;
+                    int auxProcess = Convert.ToInt32(timeProcess);
+                    bool enqueueProcess = variableGlobal.count == 2 ? true : false;
+
+                    if (enqueueProcess)
+                        EnqueueFinished();
+                    else
+                        EnqueueWaiting();
+                    variableGlobal.count = variableGlobal.count + 1;
+
+
+                }
         }
+
         private void timer3_Tick(object sender, EventArgs e)
         {
             int devAux = Convert.ToInt32(mls.Text);
@@ -268,17 +279,31 @@ namespace Simulacion_Procesos
             if (devAux == 30)
             {
                 tmrDev.Stop();
-              //120
+                //120
                 string timeProcess = variableGlobal.inProcess[3];
                 int auxInProgress = devAux; //60
                 int auxProcess = Convert.ToInt32(timeProcess);
                 variableGlobal.calcRest = auxProcess - auxInProgress;
 
-                    dequeueWaitProcess();
+                dequeueWaitProcess();
 
                 //dequeueWaitProcess();
                 mls.Text = "0";
                 devAux = 0;
+            }
+        }
+        private void timerFinalizado_Tick(object sender, EventArgs e)
+        {
+            int devAux = Convert.ToInt32(mls.Text);
+            devAux = devAux + 1;
+            mls.Text = devAux.ToString();
+
+
+            if (devAux == variableGlobal.tiempoTotal) //tiempo del proceso menor a 60
+            {
+                timerFinalizado.Stop();
+                EnqueueFinished();
+                variableGlobal.count = variableGlobal.count + 1;
             }
         }
         private void timerInter_Tick(object sender, EventArgs e)
@@ -305,11 +330,12 @@ namespace Simulacion_Procesos
             }
         }
 
-            private void gridAsignationProcess_FormClosing(object sender, FormClosingEventArgs e)
+        private void gridAsignationProcess_FormClosing(object sender, FormClosingEventArgs e)
         {
             tmrDev.Enabled = false;
             timer2.Enabled = false;
             timer3.Enabled = false;
+            timerFinalizado.Enabled = false;
             timerInter.Enabled = false;
         }
 
@@ -336,7 +362,7 @@ namespace Simulacion_Procesos
 
         private void button1_Click(object sender, EventArgs e)
         {
-                tmrDev.Enabled = false;
+            tmrDev.Enabled = false;
             if (gridRunning.SelectedRows.Count > 0)
             {
 
@@ -360,5 +386,6 @@ namespace Simulacion_Procesos
         {
 
         }
+
     }
 }

@@ -101,6 +101,7 @@ namespace Simulacion_Procesos
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timerInter = new System.Windows.Forms.Timer(this.components);
+            this.timerFinalizado = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -134,7 +135,7 @@ namespace Simulacion_Procesos
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Location = new System.Drawing.Point(3, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1258, 97);
+            this.panel1.Size = new System.Drawing.Size(1529, 97);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -154,7 +155,7 @@ namespace Simulacion_Procesos
             this.agregarProcesoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1258, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1529, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -745,6 +746,11 @@ namespace Simulacion_Procesos
             this.timerInter.Interval = 1000;
             this.timerInter.Tick += new System.EventHandler(this.timerInter_Tick);
             // 
+            // timerFinalizado
+            // 
+            this.timerFinalizado.Interval = 1000;
+            this.timerFinalizado.Tick += new System.EventHandler(this.timerFinalizado_Tick);
+            // 
             // gridAsignationProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -867,6 +873,7 @@ namespace Simulacion_Procesos
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Timer timerFinalizado;
     }
 }
 
