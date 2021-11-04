@@ -216,7 +216,7 @@ namespace Simulacion_Procesos
             MessageBox.Show("Proceso finalizado correctamente", "Informacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
         }
 
-        private void tmrDev_Tick(object sender, EventArgs e)
+        private void tmrDev_Tick(object sender, EventArgs e)//
         {
             int aux = Convert.ToInt32(mls.Text);
             aux = aux+1;
@@ -224,7 +224,7 @@ namespace Simulacion_Procesos
             //Milisegudos
             mls.Text = aux.ToString();
 
-            if (aux == 5) //segundos
+            if (aux == 5) //segundos en estado NEW para pasar a ready y runing 
             {
                 tmrDev.Stop(); 
                 dequeueEnqueueProcess();
@@ -233,7 +233,7 @@ namespace Simulacion_Procesos
             }
            
         }
-        private void timer2_Tick(object sender, EventArgs e)
+        private void timer2_Tick(object sender, EventArgs e)/////RUNING
         {
             int n1 = Convert.ToInt32(mls.Text);
             n1 = n1 + 1;
@@ -249,11 +249,13 @@ namespace Simulacion_Procesos
 
                 if (enqueueProcess)
                     EnqueueFinished();
-                else
+                else 
                 EnqueueWaiting();
                 variableGlobal.count = variableGlobal.count + 1;
 
+           
             }
+           
         }
         private void timer3_Tick(object sender, EventArgs e)
         {
@@ -305,6 +307,12 @@ namespace Simulacion_Procesos
 
 
         private void gridAsignationProcess_FormClosing(object sender, FormClosingEventArgs e)
+
+     
+
+
+
+            private void gridAsignationProcess_FormClosing(object sender, FormClosingEventArgs e)
         {
             tmrDev.Enabled = false;
             timer2.Enabled = false;
@@ -349,5 +357,15 @@ namespace Simulacion_Procesos
             }
         }
 
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mls_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
