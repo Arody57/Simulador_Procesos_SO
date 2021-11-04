@@ -64,6 +64,7 @@
     <Compile Include="info_procesos.Designer.cs">
       <DependentUpon>info_procesos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Archivo Log\Log.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="variableGlobal\variable_global.cs" />

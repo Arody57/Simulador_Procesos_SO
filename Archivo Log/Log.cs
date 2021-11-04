@@ -11,35 +11,26 @@ namespace Simulacion_Procesos
 	public class Log
 	{
 		private string Path = "";
-
-		public Log(String Path)
+		//Pat para crear una carpeta dentro del proyecto en ejecucion bin/debug
+		public Log(string Path)
 		{
 			this.Path = Path;
 		}
-
-		public void Add()
+		//Se añade data al archivo, se crea el nombre automaticamente con la fecha 
+		public void Add(string logger)
 		{
 			CreateDirectory();
-			string nombre = GetNameFile();
+			var dates = DateTime.Now;
+			var Date = dates.Date.ToString("dd-MM-yyyy");
+			string nombre = String.Format("log_{0}_Proceso_finalizado", Date);
 			string cadena = "";//sustitutir por cola
 			//string nombre cola
 			//string nombre proceso
-			cadena += DateTime.Now + "prueba " + Environment.NewLine;
-			StreamWriter sw = new StreamWriter(Path + "/" + nombre, true);
-			sw.Write(cadena);
-			sw.Close();
-
-
+			cadena += DateTime.Now + logger + Environment.NewLine;
+			StreamWriter file = new StreamWriter(Path + "/" + nombre, true);
+			file.Write(cadena);
+			file.Close();
 		}
-		private string GetNameFile()
-		{
-			string nombre = "";
-			nombre = "log" + DateTime.Now.Year + " " + DateTime.Now.Month + " " + DateTime.Now + "Log.txt";
-
-			return nombre;
-		}
-
-
 		private void CreateDirectory()
 		{
 			try

@@ -27,6 +27,7 @@ namespace Simulacion_Procesos
         Cola.Cola QueueWait = new Cola.Cola();
         Cola.Cola QueueFinal = new Cola.Cola();
         Cola.Cola QeueueInterrupt = new Cola.Cola();
+        Log ProcesoFinalizado = new Log(@"Procesos_Finalizados");
         public string[] arr;
         public gridAsignationProcess()
         {
@@ -216,6 +217,7 @@ namespace Simulacion_Procesos
 
             string[] itemEl = indexP.ToString().Split(',');
             gridFinal.Rows.Add(itemEl);
+            ProcesoFinalizado.Add("--PROCESO-- " + indexP.ToString());
             QueueFinal.Push(itemEl);
             MessageBox.Show("Proceso finalizado correctamente", "Informacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
             tmrDev.Enabled = false;
@@ -228,10 +230,6 @@ namespace Simulacion_Procesos
             {
                 creacionProceso();
                 tmrDev.Start();
-            }
-            else
-            {
-
             }
         }
 
