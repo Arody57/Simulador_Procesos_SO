@@ -71,20 +71,20 @@ namespace Simulacion_Procesos
             int LengthProcess = QueueProgress.NumeroElementos;
             variableGlobal.count = 1;
 
-            for (int i = 0; i < LengthProcess; i++)
-            {
+            //for (int i = 0; i < LengthProcess; i++)
+            //{
                 if (gridProcess.RowCount > 0)
                 {
                     //gridProcess.Rows.RemoveAt(gridProcess.CurrentRow.Index);
                     MessageBox.Show("Moviendo cola " + gridProcess.CurrentRow.Index + "  a estado NEW ", "Informacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                     gridProcess.Rows.Remove(gridProcess.CurrentRow);
                     info_process_grid indexProces;
-                    indexProces = (info_process_grid)QueueProgress.Pop();
+                    indexProces = (info_process_grid)QueueProgress.quitar();
                     string[] itemProcess = indexProces.ToString().Split(',');
                     gridNew.Rows.Add(itemProcess);
                     QueueNew.Push(indexProces);
                 }
-            }
+            //}
         }
         /// <summary>
         /// GRID READY
@@ -223,6 +223,16 @@ namespace Simulacion_Procesos
             timer3.Enabled = false;
             timerFinalizado.Enabled = false;
             timerInter.Enabled = false;
+            
+            if (gridProcess.Rows.Count > 0)
+            {
+                creacionProceso();
+                tmrDev.Start();
+            }
+            else
+            {
+
+            }
         }
 
         private void tmrDev_Tick(object sender, EventArgs e)//
@@ -250,7 +260,7 @@ namespace Simulacion_Procesos
             mls.Text = n1.ToString();
 
 
-                if (n1 == 30) //60
+                if (n1 == 10) //60
                 {
                     timer2.Stop();
                     string timeProcess = variableGlobal.inProcess[3];
@@ -368,8 +378,7 @@ namespace Simulacion_Procesos
 
                 timer2.Enabled = false;
                 timer3.Enabled = false;
-                //string value = gridRunning.CurrentRow.Cells["Nombre"].Value.ToString();
-                //Desde la grid, hacer que pase a la grid nueva de interrupt dandole un tiempo random de espera y luego que encole a Ready
+
                 mls.Text = "0";
                 enqueueGridInterrupt();
                 timer2.Enabled = false;

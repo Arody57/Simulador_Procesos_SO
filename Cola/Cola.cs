@@ -17,7 +17,27 @@ namespace Simulacion_Procesos.Cola
             Primero = Ultimo = null;
             NumeroElementos = 0;
         }
-
+        public object quitar()
+        {
+            object aux;
+            try
+            {
+                if (!ColaVacia())
+                {
+                    aux = Primero.Dato;
+                    Primero = Primero.Siguiente;
+                }
+                else
+                {
+                    throw new Exception("No se puede eliminar de una cola vacia");
+                }
+            }
+            catch (Exception)
+            {
+                aux = null;
+            }
+            return aux;
+        }
         public void Push(Object pDato)
         {
             Nodo NuevoNodo = new Nodo(pDato);
@@ -65,6 +85,16 @@ namespace Simulacion_Procesos.Cola
         {
             Primero = null;
             Ultimo = null;
+        }
+        //Obtener el primer elemento de la cola
+        public object frenteCola()
+        {
+            if (ColaVacia())
+            {
+                throw new Exception("Pila vacia, no se puede leer ningun elemento");
+            }
+
+            return Primero.Dato;
         }
     }
 }

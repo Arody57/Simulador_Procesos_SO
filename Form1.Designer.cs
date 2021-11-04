@@ -37,7 +37,6 @@ namespace Simulacion_Procesos
             this.procesosInicialesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.asignarProcesosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.agregarProcesoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.gridProcess = new System.Windows.Forms.DataGridView();
@@ -102,6 +101,7 @@ namespace Simulacion_Procesos
             this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timerInter = new System.Windows.Forms.Timer(this.components);
             this.timerFinalizado = new System.Windows.Forms.Timer(this.components);
+            this.agregarProcesoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -179,12 +179,6 @@ namespace Simulacion_Procesos
             this.asignarProcesosToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.asignarProcesosToolStripMenuItem.Text = "Asignar Procesos";
             this.asignarProcesosToolStripMenuItem.Click += new System.EventHandler(this.asignarProcesosToolStripMenuItem_Click);
-            // 
-            // agregarProcesoToolStripMenuItem
-            // 
-            this.agregarProcesoToolStripMenuItem.Name = "agregarProcesoToolStripMenuItem";
-            this.agregarProcesoToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
-            this.agregarProcesoToolStripMenuItem.Text = "Agregar proceso nuevo";
             // 
             // groupBox1
             // 
@@ -751,6 +745,12 @@ namespace Simulacion_Procesos
             this.timerFinalizado.Interval = 1000;
             this.timerFinalizado.Tick += new System.EventHandler(this.timerFinalizado_Tick);
             // 
+            // agregarProcesoToolStripMenuItem
+            // 
+            this.agregarProcesoToolStripMenuItem.Name = "agregarProcesoToolStripMenuItem";
+            this.agregarProcesoToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
+            this.agregarProcesoToolStripMenuItem.Text = "Agregar proceso nuevo";
+            // 
             // gridAsignationProcess
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -810,7 +810,6 @@ namespace Simulacion_Procesos
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem procesosInicialesToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem agregarProcesoToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -874,6 +873,7 @@ namespace Simulacion_Procesos
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Timer timerFinalizado;
+        private System.Windows.Forms.ToolStripMenuItem agregarProcesoToolStripMenuItem;
     }
 }
 
