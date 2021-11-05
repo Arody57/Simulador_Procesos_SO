@@ -32,35 +32,34 @@ namespace Simulacion_Procesos
             switch (index)
             {
                 case 0:
-                    txtMemory.Text = "0.0005";
+                    txtMemory.Text = "0.05";
                     txtCpu.Text = "10";
                     txtTime.Text = "60";
                     break;
                 case 1:
-                    txtMemory.Text = "0.01";
+                    txtMemory.Text = "10";
                     txtCpu.Text = "20";
                     txtTime.Text = "45";
                     break;
                 case 2:
-                    txtMemory.Text = "0.05";
+                    txtMemory.Text = "50";
                     txtCpu.Text = "30";
                     txtTime.Text = "30";
                     break;
                 case 3:
-                    txtMemory.Text = "1";
+                    txtMemory.Text = "1024";
                     txtCpu.Text = "70";
                     txtTime.Text = "120";
                     break;
                 case 4:
-                    txtMemory.Text = "0.256";
+                    txtMemory.Text = "256";
                     txtCpu.Text = "50";
                     txtTime.Text = "30";
                     break;
                 case 5:
-                    txtMemory.Text = "2";
+                    txtMemory.Text = "2048";
                     txtCpu.Text = "85";
-                    //txtTime.Text = "120";
-                    txtTime.Text = "60";
+                    txtTime.Text = "120";
                     break;
                 default:
                     break;

@@ -72,8 +72,6 @@ namespace Simulacion_Procesos
             int LengthProcess = QueueProgress.NumeroElementos;
             variableGlobal.count = 1;
 
-            //for (int i = 0; i < LengthProcess; i++)
-            //{
                 if (gridProcess.RowCount > 0)
                 {
                     //gridProcess.Rows.RemoveAt(gridProcess.CurrentRow.Index);
@@ -85,7 +83,6 @@ namespace Simulacion_Procesos
                     gridNew.Rows.Add(itemProcess);
                     QueueNew.Push(indexProces);
                 }
-            //}
         }
         /// <summary>
         /// GRID READY
@@ -241,7 +238,7 @@ namespace Simulacion_Procesos
             //Milisegudos
             mls.Text = aux.ToString();
 
-            if (aux == 5) //segundos en estado NEW para pasar a ready y runing 
+            if (aux == 15) //segundos en estado NEW para pasar a ready y runing 
             {
                 tmrDev.Stop();
                 dequeueEnqueueProcess();
@@ -258,7 +255,7 @@ namespace Simulacion_Procesos
             mls.Text = n1.ToString();
 
 
-                if (n1 == 10) //60
+                if (n1 == 60) //60
                 {
                     timer2.Stop();
                     string timeProcess = variableGlobal.inProcess[3];
@@ -295,7 +292,6 @@ namespace Simulacion_Procesos
 
                 dequeueWaitProcess();
 
-                //dequeueWaitProcess();
                 mls.Text = "0";
                 devAux = 0;
             }
@@ -322,7 +318,7 @@ namespace Simulacion_Procesos
             //Milisegudos
             mls.Text = AuxiliarTime.ToString();
 
-            if (AuxiliarTime == 6)
+            if (AuxiliarTime == 10)
             {
                 timerInter.Stop();
                 //120
