@@ -101,7 +101,6 @@ namespace Simulacion_Procesos
             this.dataGridViewTextBoxColumn30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.timerInter = new System.Windows.Forms.Timer(this.components);
             this.timerFinalizado = new System.Windows.Forms.Timer(this.components);
-            this.agregarProcesoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -135,7 +134,7 @@ namespace Simulacion_Procesos
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Location = new System.Drawing.Point(3, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1529, 97);
+            this.panel1.Size = new System.Drawing.Size(1512, 97);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -151,11 +150,10 @@ namespace Simulacion_Procesos
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.procesosInicialesToolStripMenuItem,
-            this.agregarProcesoToolStripMenuItem});
+            this.procesosInicialesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1529, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1512, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -637,7 +635,7 @@ namespace Simulacion_Procesos
             // 
             this.mls.AutoSize = true;
             this.mls.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mls.Location = new System.Drawing.Point(1388, 691);
+            this.mls.Location = new System.Drawing.Point(1403, 681);
             this.mls.Name = "mls";
             this.mls.Size = new System.Drawing.Size(19, 18);
             this.mls.TabIndex = 26;
@@ -648,7 +646,7 @@ namespace Simulacion_Procesos
             // 
             this.Time.AutoSize = true;
             this.Time.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Time.Location = new System.Drawing.Point(1368, 656);
+            this.Time.Location = new System.Drawing.Point(1383, 646);
             this.Time.Name = "Time";
             this.Time.Size = new System.Drawing.Size(61, 20);
             this.Time.TabIndex = 28;
@@ -666,9 +664,9 @@ namespace Simulacion_Procesos
             // 
             // btnInterrupt
             // 
-            this.btnInterrupt.Location = new System.Drawing.Point(1373, 566);
+            this.btnInterrupt.Location = new System.Drawing.Point(1377, 716);
             this.btnInterrupt.Name = "btnInterrupt";
-            this.btnInterrupt.Size = new System.Drawing.Size(75, 34);
+            this.btnInterrupt.Size = new System.Drawing.Size(81, 37);
             this.btnInterrupt.TabIndex = 29;
             this.btnInterrupt.Text = "Interrumpir";
             this.btnInterrupt.UseVisualStyleBackColor = true;
@@ -744,12 +742,6 @@ namespace Simulacion_Procesos
             // 
             this.timerFinalizado.Interval = 1000;
             this.timerFinalizado.Tick += new System.EventHandler(this.timerFinalizado_Tick);
-            // 
-            // agregarProcesoToolStripMenuItem
-            // 
-            this.agregarProcesoToolStripMenuItem.Name = "agregarProcesoToolStripMenuItem";
-            this.agregarProcesoToolStripMenuItem.Size = new System.Drawing.Size(142, 20);
-            this.agregarProcesoToolStripMenuItem.Text = "Agregar proceso nuevo";
             // 
             // gridAsignationProcess
             // 
@@ -873,7 +865,6 @@ namespace Simulacion_Procesos
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Timer timerFinalizado;
-        private System.Windows.Forms.ToolStripMenuItem agregarProcesoToolStripMenuItem;
     }
 }
 

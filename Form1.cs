@@ -371,6 +371,10 @@ namespace Simulacion_Procesos
         private void button1_Click(object sender, EventArgs e)
         {
             tmrDev.Enabled = false;
+            timer2.Enabled = false;
+            timer3.Enabled = false;
+            timerFinalizado.Enabled = false;
+            timerInter.Enabled = false;
             if (gridRunning.SelectedRows.Count > 0)
             {
 
