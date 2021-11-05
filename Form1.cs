@@ -368,7 +368,7 @@ namespace Simulacion_Procesos
         {
             tmrDev.Enabled = false;
             timer2.Enabled = false;
-            timer3.Enabled = false;
+            
             timerFinalizado.Enabled = false;
             timerInter.Enabled = false;
             if (gridRunning.SelectedRows.Count > 0)
